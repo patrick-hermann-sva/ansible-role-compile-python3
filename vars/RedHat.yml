@@ -1,3 +1,20 @@
+# Define centos8 dependecies
+compiled_python3_centos8_deps:
+  - gcc
+  - gcc-c++
+  - make
+  - bzip2-devel
+  - zlib
+  - zlib-devel
+  - ncurses-devel
+  - gdbm-devel
+  - openssl
+  - openssl-devel
+  - tk-devel
+  - readline-devel
+  - sqlite-devel
+  - libffi-devel
+
 # Define centos7 dependecies
 compiled_python3_centos7_deps:
   - gcc
@@ -43,6 +60,6 @@ compiled_python3_centos6_deps:
   - libffi-devel
 
 # Choose which set of dependencies based on major_version of target platform
-compiled_python3_redhat_deps: '{{ compiled_python3_centos7_deps if ansible_distribution_major_version == "7" else compiled_python3_centos6_deps}}'
+compiled_python3_redhat_deps: '{{ compiled_python3_centos8_deps if ansible_distribution_major_version == "8" else compiled_python3_centos7_deps}}'
 
 compiled_configure_flags: "--prefix=/usr --enable-optimizations "
